@@ -7,3 +7,5 @@
 build
 out
 gen
+
+application-oauth.properties

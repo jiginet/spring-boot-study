@@ -4,5 +4,8 @@
 # IntelliJ project files
 .idea
 *.iml
+build
 out
 gen
+
+application-oauth.properties

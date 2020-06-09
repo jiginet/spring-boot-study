@@ -6,7 +6,7 @@ branches:
   only:
     - master
 
-cache :
+cache:
   directories:
     - '$HOME/.m2/repository'
     - '$HOME/.gradle'
@@ -26,9 +26,20 @@ deploy:
     bucket: spring-boot-study-build
     region: ap-northeast-2
     skip_cleanup: true
-    acl : private
+    acl: private
     local_dir: deploy
-    wait-util-deployed : true
+    wait-util-deployed: true
+
+  - provider: s3
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
+    bucket: spring-boot-study-build
+    key: spring-boot-study.zip
+    bundle_type: zip
+    application: spring-boot-study
+    deployment_group: spring-boot-study-group
+    region: ap-northeast-2
+    wait-util-deployed: true
 
 notifications:
   email:

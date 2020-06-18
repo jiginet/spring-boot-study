@@ -9,15 +9,13 @@ IDLE_PORT=$(find_idle_port)
 echo "> Health Check Start!!"
 echo "> IDLE_PORT : $IDLE_PORT"
 echo "> curl -s http://localhost:$IDLE_PORT/profile "
-sleep 10
+sleep 5
 
-for RETRY_COUNT in {1..10}
-do
+for RETRY_COUNT in {1..10}; do
   RESPONSE_CODE=$(curl -s http://localhost:$IDLE_PORT/profile)
   UP_COUNT=$(echo ${RESPONSE_CODE} | grep 'real' | wc -l)
 
-  if [ ${UP_COUNT} -ge 1 ]
-  then
+  if [ ${UP_COUNT} -ge 1 ]; then
     echo "> Health check success !!"
     switch_proxy
     break
@@ -26,13 +24,12 @@ do
     echo "> Health check : ${RESPONSE_CODE}"
   fi
 
-  if [ ${RETRY_COUNT} -eq 10]
-  then
+  if [ ${RETRY_COUNT} -eq 10 ]; then
     echo "> Health check Fail!!."
     echo "> Nginx에 연결하지 않고 배포를 종료합니다."
     exit 1
   fi
 
   echo "> Health check 연결실패. 재시도..."
-  sleep 10
+  sleep 5
 done

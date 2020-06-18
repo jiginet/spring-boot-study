@@ -3,15 +3,15 @@ ABSPATH=$(readlink -f $0)
 ABSDIR=$(dirname $ABSPATH)
 source ${ABSDIR}/profile.sh
 
-RESPOSITORY=/home/ec2-user/app/step3
+REPOSITORY=/home/ec2-user/app/step3
 PROJECT_NAME=spring-boot-study
 
 echo "> build 파일복사"
-echo "> cp $RESPOSITORY/zip/*.jar $RESPOSITORY/"
-cp $RESPOSITORY/zip/*.jar $RESPOSITORY/
+echo "> cp $REPOSITORY/zip/*.jar $REPOSITORY/"
+cp $REPOSITORY/zip/*.jar $REPOSITORY/
 
 echo "> 새 애플리케이션 배포"
-JAR_NAME=$(ls -tr $RESPOSITORY/*.jar | tail -n 1)
+JAR_NAME=$(ls -tr $REPOSITORY/*.jar | tail -n 1)
 
 echo "> Jar Name : $JAR_NAME"
 

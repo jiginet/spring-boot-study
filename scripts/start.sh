@@ -6,6 +6,9 @@ source ${ABSDIR}/profile.sh
 REPOSITORY=/home/ec2-user/app/step3
 PROJECT_NAME=spring-boot-study
 
+echo "> 기존 build 파일삭제"
+rm $REPOSITORY/*.jar
+
 echo "> build 파일복사"
 echo "> cp $REPOSITORY/zip/*.jar $REPOSITORY/"
 cp $REPOSITORY/zip/*.jar $REPOSITORY/

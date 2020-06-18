@@ -18,8 +18,8 @@ function find_idle_profile() {
   echo "${IDLE_PROFILE}"
 }
 
-function find_idel_port() {
-  IDLE_PROFILE=${find_idle_profile}
+function find_idle_port() {
+  IDLE_PROFILE=$(find_idle_profile)
 
   if [ ${IDLE_PROFILE} == real1 ]; then
     echo "8081"

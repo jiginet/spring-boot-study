@@ -12,8 +12,8 @@ echo "> curl -s http://localhost:$IDLE_PORT/profile "
 sleep 5
 
 for RETRY_COUNT in {1..10}; do
-  RESPONSE_CODE=$(curl -s http://localhost:$IDLE_PORT/profile)
-  UP_COUNT=$(echo ${RESPONSE_CODE} | grep 'real' | wc -l)
+  RESPONSE=$(curl -s http://localhost:${IDLE_PORT}/profile)
+  UP_COUNT=$(echo ${RESPONSE} | grep 'real' | wc -l)
 
   if [ ${UP_COUNT} -ge 1 ]; then
     echo "> Health check success !!"
@@ -21,7 +21,7 @@ for RETRY_COUNT in {1..10}; do
     break
   else
     echo "> Health check의 응답을 알 수 없거나 혹은 실행상태가 아닙니다."
-    echo "> Health check : ${RESPONSE_CODE}"
+    echo "> Health check : ${RESPONSE}"
   fi
 
   if [ ${RETRY_COUNT} -eq 10 ]; then

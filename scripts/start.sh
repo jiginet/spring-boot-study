@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-ABSPATH=${readlink -f $0}
-ABSDIR=${dirname $ABSPATH}
+ABSPATH=$(readlink -f $0)
+ABSDIR=$(dirname $ABSPATH)
 source ${ABSDIR}/profile.sh
 
 RESPOSITORY=/home/ec2-user/app/step3
